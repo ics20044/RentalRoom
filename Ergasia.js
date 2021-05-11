@@ -106,3 +106,23 @@ function scrollnav() {
       document.getElementById("nav").style.top = "-50px";
     }
   }
+
+ var sumlikes=0;
+ var sumdislikes=0;
+ 
+   
+     document.getElementsByClassName('checklike')[0].addEventListener('click', function () {
+      sumlikes++;  
+  document.getElementsByClassName('checklike')[2].innerHTML = sumlikes + 'likes' + ' ' +  sumdislikes +'dislikes';
+ })
+   
+
+
+document.getElementsByClassName('checklike')[1].addEventListener('click', function () {
+   sumdislikes++;
+   document.getElementsByClassName('checklike')[2].innerHTML = sumlikes + 'likes' + ' ' +  sumdislikes +'dislikes';
+})
+ 
+
+
+

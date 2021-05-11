@@ -103,7 +103,15 @@ footer{
     
 }
 
+aside>#like
+{
+    background-color: blue
+}
 
+aside>#dislike
+{
+    background-color:orange;
+}
 
 footer>a{
     display: flex;
