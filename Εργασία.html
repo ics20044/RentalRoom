@@ -2,72 +2,83 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Παραμερτοποίηση</title> 
+        <title>Κράτηση Δωματίου</title> 
         <meta name="viewport" content="width=device-width , initial-scale-1.0">
         <link rel="stylesheet"  href="Εργασία.css">
         <script src="Ergasia.js"   defer></script>
     </head>
     <body>
- 
-       
+
         <nav id='nav'>
             <selection > <a href="#Description">Αρχική</a> </selection> 
             <selection >  <a href="#Menu">Παραμετροποίηση</a> </selection> 
             <selection >  <a href="#Form">Φόρμα</a> </selection> 
+            <selection >  <select><option>Ελληνικά</option><option>Αγγλικά</option></select></selection>
         </nav>
-       
 
-        
-        <div class="wrapper">
-            
-            <header>Παραμετροποίηση Προιόντος</header>
-            
+       <div class="wrapper">
+
+            <header>
+                <div class="backroundheader"></div>
+                <h1>Κράτηση Δωματίου σε Ξενοδοχείο</h1><br>
+                <a href="#Menu"><button>Κάνε κράτηση τώρα</button></a>
+            </header>
 
             <main class="main">
-            <article id="Description" >
-                <p>Καλώς ήρθατε στην ιστοσελίδα μας . Η συγκεκριμένη ιστισελίδα σας δείνει την δυνατότηατα<br> 
-                να κάνετε κράτηση για ένα δωμάτιο της αρεσκείας σας.
-                </p><img src=images/roomimage.jpg width="200">     
-            </article>
-            <article id="Menu" >
-                <form>
 
-               
-                <p>Αυτό είναι το μενού</p>    
-                <input  type="checkbox" class = "RoomsCapacity" onclick = "controllCheckbox(document.getElementsByClassName('RoomsCapacity')[1], document.getElementsByClassName('RoomsCapacity')[2] ), calculatePerchase(document.getElementsByTagName('input')[0], document.getElementsByTagName('label')[1])"   ><label>Δύκλεινο  </label><label >80 </label><label>&euro;</label><br>
-                <input  type="checkbox" class = "RoomsCapacity" onclick = "controllCheckbox(document.getElementsByClassName('RoomsCapacity')[0], document.getElementsByClassName('RoomsCapacity')[2]), calculatePerchase(document.getElementsByTagName('input')[1], document.getElementsByTagName('label')[4])"  ><label>Τετράλκεινο </label><label> 120 </label><label>&euro;</label><br>
-                <input  type="checkbox" class = "RoomsCapacity" onclick = "controllCheckbox(document.getElementsByClassName('RoomsCapacity')[0], document.getElementsByClassName('RoomsCapacity')[1]), calculatePerchase(document.getElementsByTagName('input')[2], document.getElementsByTagName('label')[7])"  ><label>Εξάκλεινο </label><label> 175</label> <label>&euro;</label><br>
+            <article id="Description" >
+                <p>Καλώς ήρθατε στην ιστοσελίδα μας . Η συγκεκριμένη <br>ιστισελίδα σας δείνει την δυνατότηατα<br>
+                να κάνετε κράτηση  ένος δωματίου ενός ξενοδοχείου της <br>αρεσκείας σας. Μπορείτε να επιλέξετε<br> 
+                την περιοχή που θα βρήσκετε το ξενοδοχείο την χωρητικότηα<br> του δωματίου, αν θέλετε να σας παρέχονται  υπηρεσίες<br>
+                 δωματίου και αν θέλετε να  έχετε πάρκινκ για αυτοκήνιτο. </p><img src=images/roomimage.jpg width="200">    
+            </article>
+
+            
+            
+        <hr>
+
+            <article id="Menu" >
+              <form onsubmit="return false">
+                <p>Διάλεξε το δωμάτιο που επιθυμείς</p><br>
+                 <img id="HArea" width="80"><br>
+                <input  type="checkbox" class = "HotelArea" onclick = "controllCheckbox(1,2, 'HotelArea' )" onmouseover = "imageHover('images/athensimage.jpg')"   onmouseout = "imageChange( )"   ><label>Αθήνα</label><br> 
+                <input  type="checkbox" class = "HotelArea" onclick = "controllCheckbox(0,2,'HotelArea' )" onmouseover = "imageHover('images/thessalonikiimage.jpg')"  onmouseout = "imageChange( )"   ><label>Θεσσαλονίκη</label><br>
+                <input  type="checkbox" class = "HotelArea" onclick = "controllCheckbox(0,1,'HotelArea' )" onmouseover = "imageHover('images/patraimage.jpg')"  onmouseout = "imageChange() "   ><label>Πάτρα</label>
                 <hr>
-                <input  type="checkbox" class = "RoomsService"  onclick="controllCheckboxtrue(document.getElementsByClassName('RoomsService')[0],document.getElementsByClassName('RoomsService')[1], document.getElementsByClassName('RoomsService')[2])"  ><label>Υπηρεσίες δωματίου</label><br>
-                <input type="checkbox" class="RoomsServive" onclick =" calculatePerchase(document.getElementsByTagName('input')[4], document.getElementsByTagName('label')[11])"  > <label>Πρωινό</label><label>40</label> <label>&euro;</label><br>
-                <input type="checkbox" class="RoomSercice" onclick =" calculatePerchase(document.getElementsByTagName('input')[5], document.getElementsByTagName('label')[14])" ><label>Μασάζ</label> <label>60</label> <label>&euro</label> <br>
+                <input  type="checkbox" class = "RoomsCapacity" onclick = "controllCheckbox(1,2, 'RoomsCapacity'), calculateTotalPerchase(0,4, 'RoomsCapacity')"   ><label>Δύκλεινο  </label><label >80 </label><label>&euro;</label><br>
+                <input  type="checkbox" class = "RoomsCapacity" onclick = "controllCheckbox(0,2, 'RoomsCapacity'), calculateTotalPerchase(1,7, 'RoomsCapacity')"  ><label>Τετράλκεινο </label><label> 120 </label><label>&euro;</label><br>
+                <input  type="checkbox" class = "RoomsCapacity" onclick = "controllCheckbox(0,1, 'RoomsCapacity'), calculateTotalPerchase(2,10, 'RoomsCapacity')"  ><label>Εξάκλεινο </label><label> 175</label> <label>&euro;</label><br>
                 <hr>
-                <input  type="checkbox"  ><label>Πάρκινκ Αυτοκινήτου</label><br>
-                <input  type="number" min="1"  ><label>Μέρες Διαμονής</label><br>
+                <input  type="checkbox" class = "RoomsServive"  onclick="controllCheckboxtrue(0,1,2), calculateTotalPerchase(0,13,'RoomsServive')"  ><label>Υπηρεσίες δωματίου</label> <label>100</label><label>&euro</label><br>
+                <input type="checkbox" class="RoomsServive" onclick ="controllCheckboxall(),controllCheckboxboth(), calculateTotalPerchase(1,  16,'RoomsServive')"  > <label>Πρωινό</label><label>40</label> <label>&euro;</label><br>
+                <input type="checkbox" class="RoomsServive" onclick ="controllCheckboxall(),controllCheckboxboth(), calculateTotalPerchase(2,19, 'RoomsServive')" ><label>Μασάζ</label> <label>60</label> <label>&euro;</label> <br>
+                <hr>
+                <input  type="checkbox" class="HotelService" onclick =" calculateTotalPerchase(0,22,'HotelService')"  > <label>Πάρκινκ Αυτοκινήτου</label> <label>20</label><label>&euro;</label><br>
+                <br>
+                <input id="numberdays"  type="number" value="1" min="1" onclick =" calculateTotalPerchase(7,null, null)"  ><label>Μέρες Διαμονής</label><br>
                 <br>
                 <input  type="date"   ><label>Ημερονηνία</label><br>
                 <br>
                 <label id="price">Ποσό Πληρωμής</label>
-
-               </form>
-                    
-
-            </article>
+                <button id="pushorder" >Προσθήκη στην παραγγελία</button>
+            </form>
+            
+        </article>
             <hr>
             <section id="Form" >
                 <form onsubmit="return false">
                      <p>Αυτή είναι η φόρμα </p>
-                     <label>Όνομα : </label><input  type="text" placeholder="Το όνομα σου" ><br>
+                     <label class = "mandatory"> *</label><label>Όνομα :</label> <input class = "inputform"  type="text" placeholder="Το όνομα σου"  ><br>
                     <br>
-                    <label>Επίθετο : </label><input type="text" placeholder="Το επίθετο σου"><br>
+                    <label class = "mandatory"> *</label><label>Επίθετο : </label><input class = "inputform" type="text" placeholder="Το επίθετο σου" ><br>
                     <br>
-                    <label>Email : </label><input type="email" placeholder="Το Email σου"><br>
+                    <label class = "mandatory"> *</label><label>Email : </label><input class = "inputform" type="email" placeholder="Το Email σου" ><br>
                     <br>
-                    <label>Επιβεβαίωση Email : </label><input type="email" placeholder="Δώσε ξανα το Email σου"><br>
+                    <label class = "mandatory"> *</label><label>Επιβεβαίωση Email : </label><input class = "inputform" type="email" placeholder="Δώσε ξανα το Email σου" ><br>
                     <br>
-                    <label>Τηλέφωνο : </label><input type="tel" placeholder="Το τηλέφωνο σου"><br>
+                    <label class = "mandatory"> *</label><label>Τηλέφωνο : </label><input class = "inputform" type="tel" placeholder="Το τηλέφωνο σου"  ><br>
                     <br>
-                    <label>Αποδοχή Πολιτικής Απορρίτου</label> </label><input id="checkboxPolicy" type="checkbox" ><br>
+                    <label class = "mandatory" >*</label> <label>Αποδοχή Πολιτικής Απορρίτου</label> </label><input class = "inputform" type="checkbox" ><br>
                     <br>
                     <label>Υποβολή </label><input id="submit" type="submit" value="Υποβολή">
                     <br>
@@ -76,17 +87,35 @@
             </section>
             </main>
             
-            <aside class="aside aside-1"><button id="like" class="checklike">like</button> <button id="dislike" class="checklike">dislike</button><br>
-            <label class="checklike"></label></aside>
-            <aside class="aside aside-2">Aside 2</aside>
+            <aside class="aside aside-1"><p>Κάντε like αν σας άρεσε η ιστοσελίδα μας</p><button id="like" class="checklike">like</button> <button id="dislike" class="checklike">dislike</button><br>
+            <label class="checklike"></label>
+            </aside>
+            <aside class="aside aside-2"><button  id="marketbutton" > <img src=images/marketimage.png width="30"> </button>
+                <div class="market " id="market">
+
+                
+                <div class = marketheader >
+                    <div class = markettitle>
+                     Δές την κράτηση σου 
+                    </div>
+                  <button  id="cbutton">&times;</button>
+
+                </div>
+                <div class = marketbody>
+            
+                </div>
+                
+                <br>
+                <label id="order"></label>
+                
+                <div   id="backeffe"></div>
+            </aside>
             <footer> 
-                <p>Η συκγεκριμένη  ιστοσελίδα έγινε<br> στα πλαίσια άσκησης Προγραμματισμού<br> Διαδικτύου που είναι μάθημα<br> Εφαρμοσμένης Πληροφορικήςτου Πανεπιστειμίου Μακεδωνίας<br> απο τον Μαχαίρα Παναγιώτη</p>
+                <p>Η συκγεκριμένη  ιστοσελίδα έγινε στα πλαίσια<br> άσκησης Προγραμματισμού Διαδικτύου που είναι<br>  μάθημα Εφαρμοσμένης Πληροφορικήςτου Πανεπιστειμίου<br> Μακεδωνίας απο τον Μαχαίρα Παναγιώτη</p>
                 <a href="https://www.linkedin.com/in/panagiotismachairas-9263841b9" target="_blank"><img src="images/linkedinimage.jpg" width="30" ></a>
                 <a href="https://github.com/ics20044" target="_blank"><img src="images/githubimage.png" width="30"></a>
                 <a href="https://maps.google.com/?q=Εγνατία 156, Θεσσαλονίκη 546 36" target="_blank"> <img width= "30"src="images/googlemapsimage.png"/></a>
             </footer>
         </div>
-
     </body>
-
 </html>

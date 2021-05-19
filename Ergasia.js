@@ -1,98 +1,139 @@
 'use strict';
 
-document.getElementById('submit').addEventListener('click', function () {
-
-      if(document.getElementById("checkboxPolicy").checked == true)
-      {
-        document.getElementById("inputElements").innerHTML = 'correct input' + "<img src='correctimage.png' width=40>"
-      }
-      else
-      {
-        document.getElementById("inputElements").innerHTML = 'incorrect input' + "<img src='incorrectimage.png' width=40>"
-      }
-    
-   })
-var price=0;
-var checkboxprevious= null;
-var previousbooleanCBP = false
-var KeepThePrice = 0;
-
-
-
-
-   function calculatePerchase(inputel,labelel)
-   {
-           console.log(inputel.checked);
-           var p = parseFloat(labelel.textContent);
-           
-           if(inputel.checked == true)
-           {
-              if( checkboxprevious!=null && inputel.className == 'RoomsCapacity' )
-              {
-                if(checkboxprevious != inputel && previousbooleanCBP == true){
-                  console.log("CORRECT1");
-                  price += p - KeepThePrice;
-                }
-                else if(checkboxprevious == inputel || checkboxprevious.checked == false){
-                  console.log("CORRECT2");
+   var price=0;
+   var checkboxprevious= null;
+   var previousclassName = ' ';
+   var previouscheck = false;
+   var KeepThePrice1 = 0;
+   var KeepThePrice2 = 0;
+   
+    function calculatePerchase(inputel,labelel, className)
+      {   
+          var p = parseFloat(document.getElementsByTagName('label')[labelel].textContent);
+            
+          if(document.getElementsByClassName(className)[inputel].checked == true)
+          {
+            if(checkboxprevious!=null){
+              if((className == "RoomsCapacity" && previousclassName == "RoomsCapacity"))  {
+                if(previouscheck == false){
                   price += p;
                 }
                 else{
-                  console.log("x");
-                  price += p - KeepThePrice;
+                  price += p - KeepThePrice1;
                 }
               }
-              else
-              {
-                console.log("y");
-                 //p  = parseFloat(labelel.textContent);
-                 price += p;
+              else if(className == "RoomsCapacity" && previousclassName != "RoomsCapacity"){
+                price += p - KeepThePrice2;
               }
-           }
-           else
-           {
-            console.log("z");
-            //var p = parseFloat(labelel.textContent);
+              else{
+                price += p;
+              }
+            }
+            else{
+              price += p;
+            }
+          }
+          else{
             price -= p;
-           }
-           
-    
+          }
           
-        
-         
-           console.log(price);
+          
+          
 
-             document.getElementById('price').innerHTML = price;
-             checkboxprevious = inputel;
-             previousbooleanCBP = checkboxprevious.checked;
-             KeepThePrice = p;
+          
+          checkboxprevious = document.getElementsByClassName(className)[inputel];
+          previouscheck = checkboxprevious.checked;               
+          previousclassName = className;
+          KeepThePrice1 = p;
+          if(className == "RoomsCapacity"){
+            KeepThePrice2 = p;
+          }
+          return price;
 
-         }
+
+        }
+
+
+        function imageHover(image)
+        {
+          
+          document.getElementById('HArea').src = image;
+        }
+
+
+        function imageChange( )
+        {
+          document.getElementById('HArea').removeAttribute('src');
+        }
+
+         function calculateTotalPerchase(intexofinput,indexoflabel, className)
+         {
+          var totalprice;
        
-  function controllCheckbox (c1, c2){
+         
+           if(indexoflabel != null)
+          {
+            totalprice = calculatePerchase(intexofinput,indexoflabel, className) * document.getElementById("numberdays").value; 
+            
+           
+          }
+          else
+          {
+            totalprice = price *  document.getElementById("numberdays").value
+          }
+           document.getElementById('price').innerHTML = 'Ποσό Πληρομής' + totalprice;
+         }
+
+
+
+         document.getElementById('pushorder').addEventListener('click', function ()  {
+
+          document.getElementById('order').innerHTML = document.getElementById('price').textContent; 
+           
+         })
+       
+  function controllCheckbox (n1, n2, className){
     
-    c1.checked = false;
-    c2.checked = false;
+    document.getElementsByClassName(className)[n1].checked = false;
+    document.getElementsByClassName(className)[n2].checked = false;
     
   } 
 
-  function controllCheckboxtrue (c1,c2, c3){
-     console.log(c2.checked);
-    if(c1.checked == true)
+  function controllCheckboxtrue (n1,n2, n3){
+     
+    if(document.getElementsByClassName('RoomsServive')[n1].checked == true)
     {
      
-       c2.checked = true;
-       c3.checked = true;
+      document.getElementsByClassName('RoomsServive')[n2].checked = true;
+      document.getElementsByClassName('RoomsServive')[n3].checked = true;
      
     }
     else
     {
-      c2.checked = false;
-      c3.checked = false;
+      document.getElementsByClassName('RoomsServive')[n2].checked = false;
+      document.getElementsByClassName('RoomsServive')[n3].checked = false;
     }
+
+   
    
     
   } 
+
+  function controllCheckboxboth() {
+    if(document.getElementsByClassName('RoomsServive')[1].checked == true && document.getElementsByClassName('RoomsServive')[2].checked == true)
+    {
+      document.getElementsByClassName('RoomsServive')[0].checked = true;
+    }
+  }
+
+  function controllCheckboxall() {
+
+    if(document.getElementsByClassName('RoomsServive')[1].checked == false || document.getElementsByClassName('RoomsServive')[2].checked == false )
+    {
+      document.getElementsByClassName('RoomsServive')[0].checked = false;
+    }
+    
+  }
   
  
   window.onscroll = function() {scrollnav()};
@@ -122,7 +163,86 @@ document.getElementsByClassName('checklike')[1].addEventListener('click', functi
    sumdislikes++;
    document.getElementsByClassName('checklike')[2].innerHTML = sumlikes + 'likes' + ' ' +  sumdislikes +'dislikes';
 })
+
+
  
+
+document.getElementById('submit').addEventListener('click', function () {
+
+  var input = true;
+  for(var i=0; i<document.getElementsByClassName('inputform').length; i++)
+  {
+    
+    if(document.getElementsByClassName('inputform')[i].type != "checkbox")
+    {
+     
+         if(document.getElementsByClassName('inputform')[i].value == "")
+         {
+           
+          document.getElementById("inputElements").innerHTML = 'Incorrect input' + "<img src='images/incorrectimage.png' width=40>";
+            input = false;
+            break;
+         }
+         else if(document.getElementsByClassName('inputform')[i].type == "email" && document.getElementsByClassName('inputform')[i] == document.getElementsByClassName('inputform')[2])
+         {
+           
+           if(document.getElementsByClassName('inputform')[i+1].value != document.getElementsByClassName('inputform')[i].value)
+           {
+            document.getElementById("inputElements").innerHTML = 'Incorrect input. The email and confirm email is not the same' + "<img src='images/incorrectimage.png' width=40>"; 
+            input = false;
+            break;
+           }
+         }
+        
+      
+    }
+    else{
+      if(document.getElementsByClassName('inputform')[i].checked != true)
+      {
+        document.getElementById("inputElements").innerHTML = 'You have not checked the privacy policy. You must check' + "<img src='images/incorrectimage.png' width=40>"
+        input = false;
+      }
+     
+  }
+  }
+  if(input)
+  {
+    document.getElementById("inputElements").innerHTML = 'Correct input' + "<img src='images/correctimage.png' width=40>"
+  }
+  
+
+})
+
+
+
+   document.getElementById('marketbutton').addEventListener('click',  function() {
+       document.getElementById('market').classList.add('active');
+    document.getElementById('backeffe').classList.add('active');
+   })
+
+   
+
+ 
+
+  
+
+
+
+   document.getElementById('market').addEventListener('click', function (){
+  document.getElementById('market').classList.remove('active');
+  document.getElementById('backeffe').classList.remove('active')
+})
+
+
+document.getElementById('backeffe').addEventListener('click', function () {
+  const modal = document.querySelectorAll('.market .active') ;
+  
+})
+
+
+
+
+
 
 
 

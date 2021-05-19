@@ -4,7 +4,8 @@
     src: url("http://fonts.gstatic.com/s/firasans/v5/5jAMGMsBXS6xUYEytGcZdD8E0i7KZn-EPnyo3HZu7kw.woff");
 }
 body{
-    background-color: rgb(255, 255, 230);
+    background-color: #fafffc;
+   
 }
 
 
@@ -12,11 +13,82 @@ body{
     margin: 10;
 }
 
-#Form,#Menu{
+#Description,#Form,#Menu{
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 80;
+}
+
+
+.market{
+    position: fixed;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%) scale(0);
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index:10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+}
+
+.market.active{
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.marketheader{
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.marketheader .markettitle{
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.marketheader #cbutton{
+    cursor: pointer;
+    border:none;
+    outline:none;
+    background:none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.backeffe{
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+    pointer-events: none;
+}
+
+#backeffe.avtive{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.marketbody{
+  
+    padding: 10px 15px;
+
+}
+
+
+
+
+#marketbutton{
+    cursor: pointer;
+    border:none;
+    outline:none
 }
 
 
@@ -32,10 +104,15 @@ body{
     font-size: 15px;
     transition: top 0.3s;
     position: fixed;
-    top: -50px;
+    top: 0;
     width: 100%;
+    z-index: 3;
+    
    
 }
+
+
+
 
 #nav a {
     text-decoration: none;
@@ -84,11 +161,54 @@ body{
     padding: 10px;
     flex: 1 100%;
 }
-
-header {
-    
+#Description img{
+    float: right;
 }
 
+#Description p{
+    float:initial;
+}
+
+header {
+    position: relative;
+    height: 300x;
+    overflow: hidden;
+  }
+  
+  .backroundheader {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient( deepskyblue, #52e0d6);
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+  }
+  
+  h1 {
+    margin: 0;
+    padding: 100px 0;
+    font: 20px ;
+    text-align: center;
+  }
+  
+  header h1, header button {
+    position: relative;
+    color: white;
+  }
+
+ 
+  
+  
+  
+  
+.mandatory{
+    color: red;
+
+}
 
 
 .main {
@@ -100,6 +220,7 @@ footer{
     background-color: rgb(179, 179, 255);
     display: flex;
     justify-content:flex-start;
+    text-align:justify;
     
 }
 
@@ -117,8 +238,9 @@ footer>a{
     display: flex;
     align-items:flex-end;
     justify-content:flex-end;
-    
 }
+
+
 
 
 @media all and (min-width: 600px) {
