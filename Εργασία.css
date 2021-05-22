@@ -3,22 +3,103 @@
     font-family: "Fira Sans";
     src: url("http://fonts.gstatic.com/s/firasans/v5/5jAMGMsBXS6xUYEytGcZdD8E0i7KZn-EPnyo3HZu7kw.woff");
 }
+
 body{
     background-color: #fafffc;
-   
-}
-
-
-#Description, #Menu, #Form{
-    margin: 10;
 }
 
 #Description,#Form,#Menu{
+    margin: 10;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 80;
 }
+
+#nav {
+    list-style: none;
+    margin: 0;
+    background: deepskyblue;
+    display: flex;
+    justify-content: flex-end;
+    font-family: "Fira Sans", sans-serif;
+    font-size: 15px;
+    transition: top 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+}
+#nav a {
+    text-decoration: none;
+    display: block;
+    padding: 1em;
+    color: white;
+}
+
+#nav a:hover {
+    background: #00b7f5;
+}
+
+header {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+.backroundheader {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient( deepskyblue, #ccf5ff);
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+  }
+  
+h1 {
+    margin: 0;
+    padding: 100px 0;
+    font: 20px ;
+    text-align: center;
+  }
+  
+header h1 {
+    position: relative;
+    color: white;
+  }
+
+header button {
+    position: relative;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+#Description img{
+    float: right;
+}
+
+ #Description p{ 
+    float:initial;
+}
+
+.main {
+    text-align: left;
+}
+
+.mandatory{
+    color: red;
+}
+
+#pushorder, #submit{
+    background-color: blue;
+    border-radius: 10px;
+}
+
 
 
 .market{
@@ -60,10 +141,10 @@ body{
     font-weight: bold;
 }
 
-.backeffe{
+#backeffe{
     position: fixed;
+     opacity: 0;
     top: 0;
-    opacity: 0;
     left:0;
     right: 0;
     bottom: 0;
@@ -71,58 +152,45 @@ body{
     pointer-events: none;
 }
 
-#backeffe.avtive{
+#backeffe.active{
     opacity: 1;
     pointer-events: all;
 }
 
 .marketbody{
-  
-    padding: 10px 15px;
-
+   padding: 10px 15px;
 }
-
-
-
 
 #marketbutton{
     cursor: pointer;
     border:none;
-    outline:none
+    outline:none;
+    background-color: #fafffc;
 }
 
+aside>#like
+{
+    background-color: blue;
+    border-radius: 10px;
+}
 
+aside>#dislike
+{
+    background-color:orange;
+    border-radius: 10px;
+}
 
-
-#nav {
-    list-style: none;
-    margin: 0;
-    background: deepskyblue;
+footer>a{
     display: flex;
-    justify-content: flex-end;
-    font-family: "Fira Sans", sans-serif;
-    font-size: 15px;
-    transition: top 0.3s;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 3;
-    
-   
+    align-items:flex-end;
+    justify-content:flex-end;
 }
 
-
-
-
-#nav a {
-    text-decoration: none;
-    display: block;
-    padding: 1em;
-    color: white;
-}
-
-#nav a:hover {
-    background: #00b7f5;
+footer{
+    background-color: rgb(0, 92, 230);
+    display: flex;
+    justify-content:flex-start;
+    text-align:justify;
 }
 
 @media all and (max-width: 800px) {
@@ -149,6 +217,7 @@ body{
     }
 }
 
+
 .wrapper {
     margin-top: 30px;
     display: flex;
@@ -161,87 +230,6 @@ body{
     padding: 10px;
     flex: 1 100%;
 }
-#Description img{
-    float: right;
-}
-
-#Description p{
-    float:initial;
-}
-
-header {
-    position: relative;
-    height: 300x;
-    overflow: hidden;
-  }
-  
-  .backroundheader {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient( deepskyblue, #52e0d6);
-    border-bottom-left-radius: 50% 20%;
-    border-bottom-right-radius: 50% 20%;
-  }
-  
-  h1 {
-    margin: 0;
-    padding: 100px 0;
-    font: 20px ;
-    text-align: center;
-  }
-  
-  header h1, header button {
-    position: relative;
-    color: white;
-  }
-
- 
-  
-  
-  
-  
-.mandatory{
-    color: red;
-
-}
-
-
-.main {
-    text-align: left;
-    
-}
-
-footer{
-    background-color: rgb(179, 179, 255);
-    display: flex;
-    justify-content:flex-start;
-    text-align:justify;
-    
-}
-
-aside>#like
-{
-    background-color: blue
-}
-
-aside>#dislike
-{
-    background-color:orange;
-}
-
-footer>a{
-    display: flex;
-    align-items:flex-end;
-    justify-content:flex-end;
-}
-
-
-
 
 @media all and (min-width: 600px) {
     .aside {

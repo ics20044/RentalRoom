@@ -1,46 +1,60 @@
 'use strict';
 
+
    var price=0;
    var checkboxprevious= null;
    var previousclassName = ' ';
    var previouscheck = false;
    var KeepThePrice1 = 0;
    var KeepThePrice2 = 0;
-   
-    function calculatePerchase(inputel,labelel, className)
+   //This method calculate the perchase of reservation without take account if costumer wants the bedroom for more days. 
+     function calculatePerchase(inputel,labelel, className)
       {   
           var p = parseFloat(document.getElementsByTagName('label')[labelel].textContent);
             
           if(document.getElementsByClassName(className)[inputel].checked == true)
           {
+            console.log((document.getElementsByClassName(className)[inputel] == document.getElementById("allService")));
+          
             if(checkboxprevious!=null){
-              if((className == "RoomsCapacity" && previousclassName == "RoomsCapacity"))  {
-                if(previouscheck == false){
-                  price += p;
+  
+              if((className == "RoomsCapacity" && previousclassName == "RoomsCapacity"))    {
+               
+                if(previouscheck == false ){
+                  price += p;   
                 }
                 else{
                   price += p - KeepThePrice1;
-                }
+                  }
               }
-              else if(className == "RoomsCapacity" && previousclassName != "RoomsCapacity"){
+              else if(className == "RoomsCapacity" && previousclassName != "RoomsCapacity" ){
                 price += p - KeepThePrice2;
+             }
+              else if((document.getElementsByClassName(className)[inputel] == document.getElementById("allService"))  && previousclassName == "RoomsService" && checkboxprevious!=document.getElementById("allService"))
+              {
+                var po;
+                 if(document.getElementsByClassName(className)[1].checked == true && checkboxprevious == document.getElementsByClassName(className)[2]) 
+                 {
+                       po = parseFloat(document.getElementsByTagName('label')[16].textContent);
+                 }
+                else if(document.getElementsByClassName(className)[2].checked == true && checkboxprevious == document.getElementsByClassName(className)[1]){
+                        po = parseFloat(document.getElementsByTagName('label')[19].textContent);
+                 }
+                     price += p -po;
               }
-              else{
-                price += p;
+               else{
+                  
+                  price += p;
               }
             }
-            else{
-              price += p;
-            }
-          }
+           else{
+            price += p;
+           }
+         }
           else{
             price -= p;
           }
-          
-          
-          
-
-          
+        
           checkboxprevious = document.getElementsByClassName(className)[inputel];
           previouscheck = checkboxprevious.checked;               
           previousclassName = className;
@@ -48,22 +62,27 @@
           if(className == "RoomsCapacity"){
             KeepThePrice2 = p;
           }
+         
           return price;
+      }
 
-
-        }
-
-
+        //This method change the photo of the destination of hotels.
         function imageHover(image)
         {
           
-          document.getElementById('HArea').src = image;
+          document.getElementById('city').src = image;
+           
+        }
+
+        function imageNotification(image) {
+           document.getElementById('notification').src = image;
         }
 
 
-        function imageChange( )
+        function imageChange(image )
         {
-          document.getElementById('HArea').removeAttribute('src');
+          document.getElementById('city').src = image;
+         
         }
 
          function calculateTotalPerchase(intexofinput,indexoflabel, className)
@@ -86,11 +105,7 @@
 
 
 
-         document.getElementById('pushorder').addEventListener('click', function ()  {
-
-          document.getElementById('order').innerHTML = document.getElementById('price').textContent; 
-           
-         })
+     
        
   function controllCheckbox (n1, n2, className){
     
@@ -101,17 +116,17 @@
 
   function controllCheckboxtrue (n1,n2, n3){
      
-    if(document.getElementsByClassName('RoomsServive')[n1].checked == true)
+    if(document.getElementsByClassName('RoomsService')[n1].checked == true)
     {
      
-      document.getElementsByClassName('RoomsServive')[n2].checked = true;
-      document.getElementsByClassName('RoomsServive')[n3].checked = true;
+      document.getElementsByClassName('RoomsService')[n2].checked = true;
+      document.getElementsByClassName('RoomsService')[n3].checked = true;
      
     }
     else
     {
-      document.getElementsByClassName('RoomsServive')[n2].checked = false;
-      document.getElementsByClassName('RoomsServive')[n3].checked = false;
+      document.getElementsByClassName('RoomsService')[n2].checked = false;
+      document.getElementsByClassName('RoomsService')[n3].checked = false;
     }
 
    
@@ -120,17 +135,17 @@
   } 
 
   function controllCheckboxboth() {
-    if(document.getElementsByClassName('RoomsServive')[1].checked == true && document.getElementsByClassName('RoomsServive')[2].checked == true)
+    if(document.getElementsByClassName('RoomsService')[1].checked == true && document.getElementsByClassName('RoomsService')[2].checked == true)
     {
-      document.getElementsByClassName('RoomsServive')[0].checked = true;
+      document.getElementsByClassName('RoomsService')[0].checked = true;
     }
   }
 
   function controllCheckboxall() {
 
-    if(document.getElementsByClassName('RoomsServive')[1].checked == false || document.getElementsByClassName('RoomsServive')[2].checked == false )
+    if(document.getElementsByClassName('RoomsService')[1].checked == false || document.getElementsByClassName('RoomsService')[2].checked == false )
     {
-      document.getElementsByClassName('RoomsServive')[0].checked = false;
+      document.getElementsByClassName('RoomsService')[0].checked = false;
     }
     
   }
@@ -218,7 +233,62 @@ document.getElementById('submit').addEventListener('click', function () {
    document.getElementById('marketbutton').addEventListener('click',  function() {
        document.getElementById('market').classList.add('active');
     document.getElementById('backeffe').classList.add('active');
-   })
+    if(document.getElementById('notification').src != "")
+    {
+      var l=0;
+      var order = " ";
+      for(var i=0; i<=9; i++)
+      {   
+      
+        if(document.getElementsByTagName('input')[i].checked == true)
+         {
+           if(i>=0 && i<=2)
+           {
+              order = order + "Περιοχή:" + document.getElementsByTagName('label')[l].textContent + '<br>';
+           }
+           else if(i<=5)
+           {
+            order = order + "Χωτητικότητα Δωματίου:" + document.getElementsByTagName('label')[l].textContent + '<br>';
+           }
+           else if(i<8)
+           {
+             order = order + document.getElementsByTagName('label')[l].textContent + '<br>';
+           }
+           else
+           {
+            order = order + document.getElementsByTagName('label')[l].textContent + '<br>';
+           }
+         
+        
+        
+         }
+         if(l<3)
+        {
+           l++;
+        }
+        else
+        {
+           l = l + 3;
+       }
+      
+       
+       
+     
+      
+       
+     }
+      order += "Μέρες Διαμονής:" +   document.getElementsByTagName('input')[10].value + '<br>';
+         order += "Ημερομηνία:" +   document.getElementsByTagName('input')[11].value + '<br>' ;
+         order += document.getElementById('price').textContent ;  
+             document.getElementById("order").innerHTML = order;
+    }
+    else
+    {
+      document.getElementById("order").innerHTML = "You have not an order yet"
+  }
+   
+   }
+   )
 
    
 
@@ -238,6 +308,10 @@ document.getElementById('backeffe').addEventListener('click', function () {
   const modal = document.querySelectorAll('.market .active') ;
   
 })
+
+
+
+
 
 
 
