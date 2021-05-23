@@ -1,21 +1,25 @@
 
+/* This is the type of letters of page. */
 @font-face {
     font-family: "Fira Sans";
     src: url("http://fonts.gstatic.com/s/firasans/v5/5jAMGMsBXS6xUYEytGcZdD8E0i7KZn-EPnyo3HZu7kw.woff");
 }
 
+/* This is the background color of body. */
 body{
     background-color: #fafffc;
 }
 
+/* These commands are for classes Descreption Form and Menu. */
 #Description,#Form,#Menu{
-    margin: 10;
+    margin: 5;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 80;
 }
 
+/* These comands are for the navigation bar. */
 #nav {
     list-style: none;
     margin: 0;
@@ -41,6 +45,7 @@ body{
     background: #00b7f5;
 }
 
+/* These commands are for the header. */
 header {
     position: relative;
     height: 300px;
@@ -55,7 +60,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient( deepskyblue, #ccf5ff);
+    background-image: linear-gradient( deepskyblue,  #d9e6ff);
     border-bottom-left-radius: 50% 20%;
     border-bottom-right-radius: 50% 20%;
   }
@@ -79,6 +84,12 @@ header button {
     border-radius: 10px;
   }
 
+  header a
+  {
+     text-decoration: none;
+     color: black;
+  }
+
 #Description img{
     float: right;
 }
@@ -86,6 +97,7 @@ header button {
  #Description p{ 
     float:initial;
 }
+
 
 .main {
     text-align: left;
@@ -95,13 +107,18 @@ header button {
     color: red;
 }
 
+ /* These commands are for the button pushorder and input submit. */
 #pushorder, #submit{
     background-color: blue;
     border-radius: 10px;
 }
 
+#pushorder a{
+    text-decoration: none;
+}
 
 
+/* These commands are for the reservation of costumer. */
 .market{
     position: fixed;
     top: 50%;
@@ -168,6 +185,7 @@ header button {
     background-color: #fafffc;
 }
 
+/* These commands are for the buttons like and dislike */
 aside>#like
 {
     background-color: blue;
@@ -180,6 +198,7 @@ aside>#dislike
     border-radius: 10px;
 }
 
+/* These command are for the footer  */
 footer>a{
     display: flex;
     align-items:flex-end;
@@ -187,12 +206,13 @@ footer>a{
 }
 
 footer{
-    background-color: rgb(0, 92, 230);
+    background-color: #4040ff;
     display: flex;
     justify-content:flex-start;
     text-align:justify;
 }
 
+/* These commands are for the display of the page if has to run to device wit other dimensions */
 @media all and (max-width: 800px) {
     .nav {
         justify-content: space-around;
@@ -216,7 +236,6 @@ footer{
         border-bottom: none;
     }
 }
-
 
 .wrapper {
     margin-top: 30px;
