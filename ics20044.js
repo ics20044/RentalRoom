@@ -36,7 +36,7 @@
                   price += p - KeepThePrice2;
                 }
              }
-              else if((document.getElementsByClassName(className)[inputel] == document.getElementById("allService"))  && previousclassName == "RoomsService" && checkboxprevious!=document.getElementById("allService"))
+              else if((document.getElementsByClassName(className)[inputel] == document.getElementById("allService"))  && (previousclassName == "RoomsService" || previousclassName == "HotelService" || previousclassName == "RoomsCapacity") && checkboxprevious!=document.getElementById("allService"))
               {
                 var p1=parseFloat(document.getElementsByTagName('label')[16].textContent);
                 var p2=parseFloat(document.getElementsByTagName('label')[19].textContent);;
